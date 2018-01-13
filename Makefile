@@ -3,3 +3,6 @@ pre:
 
 install:
 	ansible-playbook start.yaml
+
+clean:
+	rm *.retry
