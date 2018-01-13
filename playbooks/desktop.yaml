@@ -1,0 +1,21 @@
+---
+- name: Joo. Install desktop environment
+  hosts: all
+  gather_facts: no
+
+  vars:
+    cask_packages:
+      - adobe-acrobat-reader
+      - firefox
+      - flowdock
+      - google-chrome
+      - iterm2
+      - shiftit
+      - skype
+      - visual-studio-code
+
+  tasks:
+    - name: Install Homebrew Cask packages
+      homebrew_cask: name={{ item }} state=present
+      with_items: "{{ cask_packages }}"
+

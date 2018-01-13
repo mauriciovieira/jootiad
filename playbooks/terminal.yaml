@@ -1,0 +1,49 @@
+---
+- name: Install terminal environment
+  hosts: all
+  gather_facts: no
+
+  vars:
+    vscode_settings: "templates/Library/ApplicationSupport/Code/User/settings.json"
+    vscode_settings_path: "~/Library/Application Support/Code/User/"
+    screenshots_path: "~/Pictures/Screenshots"
+
+    packages:
+      - ag
+      - certbot
+      - git
+      - htop
+      - hub
+      - fsf
+      - imagemagick
+      - jq
+      - mosh
+      - shellcheck
+      - wget
+      - yarn
+
+    cask_packages:
+      - java
+      - ngrok
+      - virtualbox
+
+    # todo:
+    #   - rvm
+
+  tasks:
+    - name: Install Homebrew packages
+      homebrew: name={{ item }} state=latest
+      with_items: "{{ packages }}"
+
+    - name: Install Homebrew Cask packages
+      homebrew_cask: name={{ item }} state=installed
+      with_items: "{{ cask_packages }}"
+
+    - name: Ensure {{ screenshots_path }} exists
+      file: path={{ screenshots_path }} state=directory
+
+    - name: Set screenshots location
+      shell: defaults write com.apple.screencapture location {{ screenshots_path }}
+
+    - name: Install vscode settings
+      copy: src="{{ vscode_settings }}" dest="{{ vscode_settings_path }}" mode=0640
