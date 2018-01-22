@@ -19,6 +19,9 @@
       - imagemagick
       - jq
       - mosh
+      - pyenv
+      - pyenv-virtualenv
+      - pyenv-virtualenvwrapper
       - shellcheck
       - wget
       - yarn
