@@ -15,6 +15,7 @@
       - htop
       - httpie
       - hub
+      - freetds@0.91
       - fzf
       - imagemagick
       - jq
