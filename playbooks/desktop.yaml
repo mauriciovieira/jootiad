@@ -9,8 +9,11 @@
       - firefox
       - flowdock
       - google-chrome
-      - intellij
+      - graphiql
+      - intellij-idea
       - iterm2
+      - postico
+      - secure-pipes
       - shiftit
       - skype
       - visual-studio-code
