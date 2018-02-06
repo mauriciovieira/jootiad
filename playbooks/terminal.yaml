@@ -10,6 +10,7 @@
 
     packages:
       - ag
+      - autojump
       - certbot
       - git
       - htop
